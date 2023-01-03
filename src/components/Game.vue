@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import githubApiService from '../services/githubApiService'
 
 export default {
   data: function () {
@@ -43,10 +42,6 @@ export default {
   },
   name: 'GamePanel',
   methods: {
-        async emitCustomEvent () {
-          let data = await githubApiService.getPseudo("test")
-          console.log(data)
-        },
         checkWin(e){
           this.counter++
           if(this.counter%2 == 0){
@@ -70,7 +65,6 @@ export default {
           ){
             this.winner = this.grid[e.target.id]
             this.grid = null
-            console.log("test")
           }
           console.log(e.target.id)
         }
