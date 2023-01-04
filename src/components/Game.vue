@@ -95,7 +95,7 @@ export default {
 .grid-container {
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  background-color: #2196F3;
+  background-color: #112332;
   padding: 10px;
   width: 400px;
   height: 400px;
@@ -107,6 +107,8 @@ export default {
   border: 1px solid rgba(0, 0, 0, 0.8);
   font-size: 30px;
   text-align: center;
+  height: 135px;
+  border-radius: 5px;
 }
 
 h3 {
