@@ -92,6 +92,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .grid-container {
   display: grid;
   grid-template-columns: 33% 33% 33%;
@@ -100,6 +101,7 @@ export default {
   width: 400px;
   height: 400px;
   margin: auto;
+  border-radius: 5px;
 }
 
 .grid-item {
@@ -111,9 +113,6 @@ export default {
   border-radius: 5px;
 }
 
-h3 {
-  margin: 40px 0 0;
-}
 ul {
   list-style-type: none;
   padding: 0;
