@@ -51,6 +51,7 @@ export default {
             else{
               this.grid[e.target.id] = "O"
             }
+            console.log(Object.entries(this.grid))
             if(
               (this.grid["top-left"] === this.grid["top-middle"] && this.grid["top-left"] === this.grid["top-right"] && this.grid["top-left"] != " ") ||
               (this.grid["top-left"] === this.grid["middle-middle"] && this.grid["top-left"] === this.grid["bottom-right"] && this.grid["top-left"] != " ") ||
@@ -66,10 +67,18 @@ export default {
               this.winner = this.grid[e.target.id]
               this.grid = null
             }
-            else if(Object.keys(this.grid).find(" ") == -1){
-                this.winner = "NOBODY"
-                this.grid = null
+            else {
+              let pass = true
+              for(let i = 0; i < Object.entries(this.grid).length;i++){
+                if(Object.entries(this.grid).at(i)[1] == " "){
+                  pass = false
+                }
               }
+              if(pass){
+                this.winner = "NOBODY"
+                this.grid = null 
+              }
+            }
           }
         }
       }
