@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="container">
     <h1>{{ this.counter }} MOVES</h1>
     <div class="grid-container"  v-if="grid != null">
       <button class="grid-item" id="top-left" @click="checkWin($event)"> {{ grid["top-left"] }}</button>
