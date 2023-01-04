@@ -14,6 +14,7 @@
     </div>
     <div v-else>
       {{ winner }} WON !
+      <button id="reload" @click="reload">RELOAD PAGE</button>
     </div>
 
   </div>
@@ -80,6 +81,9 @@ export default {
               }
             }
           }
+        },
+        reload(){
+          window.location.reload()
         }
       }
 }
