@@ -43,30 +43,34 @@ export default {
   name: 'GamePanel',
   methods: {
         checkWin(e){
-          this.counter++
-          if(this.counter%2 == 0){
-            this.grid[e.target.id] = "X"
-          }
-          else{
-            this.grid[e.target.id] = "O"
-          }
+          if(this.grid[e.target.id] == " "){
+            this.counter++
+            if(this.counter%2 == 0){
+              this.grid[e.target.id] = "X"
+            }
+            else{
+              this.grid[e.target.id] = "O"
+            }
+            if(
+              (this.grid["top-left"] === this.grid["top-middle"] && this.grid["top-left"] === this.grid["top-right"] && this.grid["top-left"] != " ") ||
+              (this.grid["top-left"] === this.grid["middle-middle"] && this.grid["top-left"] === this.grid["bottom-right"] && this.grid["top-left"] != " ") ||
+              (this.grid["top-left"] === this.grid["middle-left"] && this.grid["top-left"] === this.grid["bottom-left"] && this.grid["top-left"] != " ") ||
 
-          if(
-            (this.grid["top-left"] === this.grid["top-middle"] && this.grid["top-left"] === this.grid["top-right"] && this.grid["top-left"] != " ") ||
-            (this.grid["top-left"] === this.grid["middle-middle"] && this.grid["top-left"] === this.grid["bottom-right"] && this.grid["top-left"] != " ") ||
-            (this.grid["top-left"] === this.grid["middle-left"] && this.grid["top-left"] === this.grid["bottom-left"] && this.grid["top-left"] != " ") ||
+              (this.grid["bottom-left"] === this.grid["bottom-middle"] && this.grid["bottom-left"] === this.grid["bottom-right"] && this.grid["bottom-left"] != " ") ||
+              (this.grid["top-right"] === this.grid["middle-middle"] && this.grid["top-right"] === this.grid["bottom-left"] && this.grid["top-right"] != " ") ||
+              (this.grid["top-right"] === this.grid["middle-right"] && this.grid["top-right"] === this.grid["bottom-right"] && this.grid["top-right"] != " ") ||
 
-            (this.grid["bottom-left"] === this.grid["bottom-middle"] && this.grid["bottom-left"] === this.grid["bottom-right"] && this.grid["bottom-left"] != " ") ||
-            (this.grid["top-right"] === this.grid["middle-middle"] && this.grid["top-right"] === this.grid["bottom-left"] && this.grid["top-right"] != " ") ||
-            (this.grid["top-right"] === this.grid["middle-right"] && this.grid["top-right"] === this.grid["bottom-right"] && this.grid["top-right"] != " ") ||
-
-            (this.grid["middle-left"] === this.grid["middle-middle"] && this.grid["middle-left"] === this.grid["middle-right"] && this.grid["middle-left"] != " ") ||
-            (this.grid["top-middle"] === this.grid["middle-middle"] && this.grid["top-middle"] === this.grid["bottom-middle"] && this.grid["top-middle"] != " ")
-          ){
-            this.winner = this.grid[e.target.id]
-            this.grid = null
+              (this.grid["middle-left"] === this.grid["middle-middle"] && this.grid["middle-left"] === this.grid["middle-right"] && this.grid["middle-left"] != " ") ||
+              (this.grid["top-middle"] === this.grid["middle-middle"] && this.grid["top-middle"] === this.grid["bottom-middle"] && this.grid["top-middle"] != " ")
+            ){
+              this.winner = this.grid[e.target.id]
+              this.grid = null
+            }
+            else if(Object.keys(this.grid).find(" ") == -1){
+                this.winner = "NOBODY"
+                this.grid = null
+              }
           }
-          console.log(e.target.id)
         }
       }
 }
@@ -77,18 +81,17 @@ export default {
 <style scoped>
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 33% 33% 33%;
   background-color: #2196F3;
   padding: 10px;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   margin: auto;
 }
 
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
   font-size: 30px;
   text-align: center;
 }
